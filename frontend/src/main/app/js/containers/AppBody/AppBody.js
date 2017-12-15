@@ -5,7 +5,7 @@ import { TimeList } from '../TimeList/TimeList';
 
 export const AppBody = () => (
     <div>
-        <Route exact path='/' render={ StartPage }/>
+        <Route exact path='/' component={ StartPage }/>
         <Route path='/time_table' component={ TimeList }/>
     </div>
 );

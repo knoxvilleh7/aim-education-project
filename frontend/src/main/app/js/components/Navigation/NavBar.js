@@ -7,15 +7,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Toolbar, ToolbarGroup, ToolbarSeparator } from 'material-ui/Toolbar';
 import { Link } from 'react-router-dom';
 
+import image from '../../../img/aim1.png';
+
 export class NavBar extends React.Component {
 
     render() {
         return (
             <Toolbar>
                 <ToolbarGroup>
-                    <div><img src='/aim1.png'/></div>
+                    <div><img src={image}/></div>
                     <ToolbarSeparator />
-                    <RaisedButton label="Home" primary={true}><Link to='/' style={{display: 'block', height: '100%'}}>Home</Link></RaisedButton>
+                    <RaisedButton primary={true}><Link to='/' style={{display: 'block', height: '100%'}}>Home</Link></RaisedButton>
                     <ToolbarSeparator />
                     <RaisedButton primary={true}><Link to='/time_table' style={{display: 'block', height: '100%'}}>Time List</Link></RaisedButton>
                 </ToolbarGroup>
