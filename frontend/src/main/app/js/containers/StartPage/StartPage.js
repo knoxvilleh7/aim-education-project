@@ -1,19 +1,15 @@
 import React from 'react';
-import image from '../../../img/back1.png';
+import aim from '../../../img/aim2.png';
 
 
 export class StartPage extends React.Component {
 
     render() {
 
-        let pageBackground = {
-            background: 'black',
-            width: '100%',
-            height: '905px'
-        };
-
         return (
-            <img src={image} style={ pageBackground }/>
+            <div>
+                <img src={ aim } />
+            </div>
         );
     }
 }

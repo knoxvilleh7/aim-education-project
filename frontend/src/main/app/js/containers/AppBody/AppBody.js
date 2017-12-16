@@ -7,7 +7,7 @@ export class AppBody extends React.Component {
 
     render() {
         return(
-            <div>
+            <div style={{textAlign: 'center'}}>
                 <Route exact path='/' component={ StartPage }/>
                 <Route path='/time_table' component={ TimeList }/>
             </div>

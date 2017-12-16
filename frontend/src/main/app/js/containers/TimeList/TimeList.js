@@ -18,7 +18,7 @@ export class TimeList extends Component {
     }
 
     componentWillMount() {
-        const {dispatchAction}=this.props;
+        const { dispatchAction }=this.props;
         actions.getUsers(dispatchAction);
     }
 
@@ -33,7 +33,9 @@ export class TimeList extends Component {
             return null;
         }
         return (
-            <TimeTable userList={userList} dispatchAction={dispatchAction}/>
+            <div style={{width: '1300px', display: 'inline-block'}}>
+                <TimeTable userList={userList} dispatchAction={dispatchAction}/>
+            </div>
         );
     }
 }

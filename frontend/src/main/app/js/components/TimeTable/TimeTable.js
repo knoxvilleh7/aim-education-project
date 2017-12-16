@@ -24,12 +24,10 @@ export class TimeTable extends React.Component {
         });
         return (
             <Table
-                height={'900px'}
                 fixedHeader={true}
                 fixedFooter={true}
                 selectable={true}
                 multiSelectable={true}
-                //style={{width: '1200px'}}
             >
                 <TableHeader
                     displaySelectAll={true}
