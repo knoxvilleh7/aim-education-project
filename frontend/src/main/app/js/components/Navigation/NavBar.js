@@ -33,7 +33,7 @@ export class NavBar extends React.Component {
             actions.switchTheme(dispatchAction, themeName);
         };
 
-        const buttonStyle = {display: 'block', height: '100%', textDecoration: 'none'};
+        const buttonStyle = {display: 'block', height: '100%', textDecoration: 'none', color: 'black'};
         return (
             <Toolbar>
                 <ToolbarGroup>
@@ -52,7 +52,7 @@ export class NavBar extends React.Component {
                         }
                     >
                         <MenuItem primaryText="Switch theme" onClick={switchTheme}/>
-                        <MenuItem primaryText="More Info"/>
+                        <MenuItem><Link to='/profile' style={buttonStyle}>My profile</Link></MenuItem>
                     </IconMenu>
                 </ToolbarGroup>
             </Toolbar>
