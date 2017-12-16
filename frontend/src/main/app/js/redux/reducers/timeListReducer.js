@@ -16,12 +16,12 @@ export default function timeListReducer(state = initialState, action = {}) {
         case actions.USERS_LOAD_FAILED:
             return state
                 .set('userListLoading', false)
-                .set('userListLoadingError', action.error);
+                .set('userListLoadFailed', action.error);
         case actions.USERS_WIPE:
             return state
                 .set('userListLoading', false)
                 .set('userListLoaded', false)
-                .set('userListLoadingError', false)
+                .set('userListLoadFailed', false)
                 .clear('userList');
         default:
             return state;

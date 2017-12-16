@@ -6,12 +6,33 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Toolbar, ToolbarGroup, ToolbarSeparator } from 'material-ui/Toolbar';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as actions from '../../actions/ThemeActions/ThemeActionCreator';
 import image from '../../../img/aim1.png';
 
+
+@connect(
+    (state) => ({
+        themeName: state.themeReducer.themeName
+    }), (dispatch) => ({
+        dispatchAction: dispatch
+    })
+)
 export class NavBar extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+        const switchTheme = () => {
+            const dispatchAction = this.props.dispatchAction;
+            const themeName = this.props.themeName;
+            actions.switchTheme(dispatchAction, themeName);
+        };
+
         return (
             <Toolbar>
                 <ToolbarGroup>
@@ -29,7 +50,7 @@ export class NavBar extends React.Component {
                             </IconButton>
                         }
                     >
-                        <MenuItem primaryText="Download"/>
+                        <MenuItem primaryText="Switch theme" onClick={switchTheme}/>
                         <MenuItem primaryText="More Info"/>
                     </IconMenu>
                 </ToolbarGroup>
@@ -37,5 +58,10 @@ export class NavBar extends React.Component {
         );
     }
 }
+
+NavBar.propTypes = {
+    themeName: PropTypes.string,
+    dispatchAction: PropTypes.func,
+};
 
 export default NavBar;

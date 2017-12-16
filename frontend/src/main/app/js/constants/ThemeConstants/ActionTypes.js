@@ -1,0 +1,3 @@
+export const THEME_LOADING = 'THEME_LOADING';
+export const THEME_LOADED = 'THEME_LOADED';
+export const THEME_LOAD_FAILED = 'THEME_LOAD_FAILED';

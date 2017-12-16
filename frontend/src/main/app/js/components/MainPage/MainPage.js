@@ -1,22 +1,45 @@
-import React from "react";
-import {Button} from "react-bootstrap";
+import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { ConnectedRouter } from 'react-router-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { App } from '../App/App';
+import '../../../css/index.css';
 
+@connect(
+    (state) => ({
+        theme: state.themeReducer.theme
+    }), (dispatch) => ({
+        dispatchAction: dispatch
+    })
+)
+export class MainPage extends React.Component {
 
-export const MainPage = () => (
+    constructor(props) {
+        super(props);
+    }
 
-    <div className="main-page-div">
-        <h1 className="welcome">Welcome to the Aimprosoft time tracking application!</h1>
-        <h3 className="welcome">What would you like to do?</h3>
-        <div className="main-page-buttons">
-            <div className="main-page-button-dep">
-                <Button bsStyle="primary">Time Table</Button>
-            </div>
-            <div className="main-page-button-emp">
-                <Button bsStyle="warning">Track time</Button>
-            </div>
-        </div>
-    </div>
-);
+    render() {
+
+        const history = this.props.history;
+        const theme = this.props.theme;
+        return (
+            <MuiThemeProvider muiTheme={theme}>
+                <ConnectedRouter history={history}>
+                    <App/>
+                </ConnectedRouter>
+            </MuiThemeProvider>
+        );
+    }
+}
+
+MainPage.propTypes = {
+    theme: PropTypes.object,
+    history: PropTypes.object,
+    dispatchAction: PropTypes.func,
+};
+
+export default MainPage;
 
 
 

@@ -3,9 +3,16 @@ import { Route } from 'react-router-dom';
 import { StartPage } from '../StartPage/StartPage';
 import { TimeList } from '../TimeList/TimeList';
 
-export const AppBody = () => (
-    <div>
-        <Route exact path='/' component={ StartPage }/>
-        <Route path='/time_table' component={ TimeList }/>
-    </div>
-);
+export class AppBody extends React.Component {
+
+    render() {
+        return(
+            <div>
+                <Route exact path='/' component={ StartPage }/>
+                <Route path='/time_table' component={ TimeList }/>
+            </div>
+        );
+    }
+}
+
+export default AppBody;
