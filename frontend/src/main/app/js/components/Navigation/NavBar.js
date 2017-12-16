@@ -53,6 +53,7 @@ export class NavBar extends React.Component {
                     >
                         <MenuItem primaryText="Switch theme" onClick={switchTheme}/>
                         <MenuItem><Link to='/profile' style={buttonStyle}>My profile</Link></MenuItem>
+                        <MenuItem><a href="/logout" style={buttonStyle}>Sign out</a></MenuItem>
                     </IconMenu>
                 </ToolbarGroup>
             </Toolbar>
