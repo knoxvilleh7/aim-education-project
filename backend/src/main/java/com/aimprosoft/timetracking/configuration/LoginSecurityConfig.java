@@ -20,6 +20,12 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user")
                 .password("user")
                 .roles("USER");
+
+//        authenticationMgr.jdbcAuthentication()
+//                .usersByUsernameQuery(
+//                        "select username, password, enabled from users where username=?")
+//                .authoritiesByUsernameQuery(
+//                        "select username, role from user_roles where username=?");
     }
 
     @Override
