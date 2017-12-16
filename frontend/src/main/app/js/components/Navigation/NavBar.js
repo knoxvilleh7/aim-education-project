@@ -33,14 +33,15 @@ export class NavBar extends React.Component {
             actions.switchTheme(dispatchAction, themeName);
         };
 
+        const buttonStyle = {display: 'block', height: '100%', textDecoration: 'none'};
         return (
             <Toolbar>
                 <ToolbarGroup>
                     <div><img src={image}/></div>
                     <ToolbarSeparator />
-                    <RaisedButton primary={true}><Link to='/' style={{display: 'block', height: '100%'}}>Home</Link></RaisedButton>
+                    <RaisedButton primary={true}><Link to='/' style={buttonStyle}>Home</Link></RaisedButton>
                     <ToolbarSeparator />
-                    <RaisedButton primary={true}><Link to='/time_table' style={{display: 'block', height: '100%'}}>Time List</Link></RaisedButton>
+                    <RaisedButton primary={true}><Link to='/time_table' style={buttonStyle}>Time List</Link></RaisedButton>
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <IconMenu

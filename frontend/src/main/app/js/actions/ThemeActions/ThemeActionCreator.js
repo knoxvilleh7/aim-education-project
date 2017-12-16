@@ -1,7 +1,5 @@
 import * as actions from './ThemeActions';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import * as themes from '../../themes/storage';
 
 
 export const switchTheme = (dispatchAction, currentTheme) => {
@@ -10,11 +8,11 @@ export const switchTheme = (dispatchAction, currentTheme) => {
 
     let themeConfig = {
         name: 'light',
-        theme: getMuiTheme(lightBaseTheme)
+        theme: themes.getLightTheme()
     };
 
     if (currentTheme == 'light') {
-        themeConfig = { name: 'dark', theme: getMuiTheme(darkBaseTheme)};
+        themeConfig = { name: 'dark', theme: themes.getDarkTheme()};
     }
 
     dispatchAction(actions.themeLoaded(themeConfig));
