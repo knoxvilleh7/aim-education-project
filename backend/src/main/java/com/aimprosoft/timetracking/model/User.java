@@ -2,20 +2,15 @@ package com.aimprosoft.timetracking.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User extends BaseModel implements Serializable {
 
-    @Id
-    @Column(name = "id", unique = true)
-    private Long id;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String userName;
 
     @Column(name = "password")
     private String password;
@@ -32,21 +27,15 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "enabled")
+    private Boolean enabled;
 
-    public Long getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -87,5 +76,13 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
