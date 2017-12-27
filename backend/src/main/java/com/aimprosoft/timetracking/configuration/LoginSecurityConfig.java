@@ -6,6 +6,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Created on 16.12.17.
@@ -14,38 +17,37 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-        authenticationMgr.inMemoryAuthentication()
-                .withUser("user")
-                .password("user")
-                .roles("USER");
+    private UserDetailsService userDetailsService;
 
-//        authenticationMgr.jdbcAuthentication()
-//                .usersByUsernameQuery(
-//                        "select username, password, enabled from users where username=?")
-//                .authoritiesByUsernameQuery(
-//                        "select username, role from user_roles where username=?");
+    @Autowired
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/public/**").permitAll()
+                .antMatchers("/api/**", "/*").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/", true)
-                .permitAll()
                 .and()
                 .httpBasic()
                 .and()
                 .csrf().disable()
-                .logout()
-                .logoutSuccessUrl("/")
+                .logout().permitAll()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
+    }
 
+    @Autowired
+    public PasswordEncoder passwordencoder() {
+        return new BCryptPasswordEncoder();
     }
 }
