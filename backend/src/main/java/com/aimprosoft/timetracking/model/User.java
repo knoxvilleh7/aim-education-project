@@ -6,19 +6,19 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User extends BaseModel implements Serializable {
 
     @Column(name = "username")
     private String userName;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "rm_password")
     private String rmPassword;
 
-    @Column(name = "login", unique = true)
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
     @Column(name = "rm_login")
@@ -27,8 +27,8 @@ public class User extends BaseModel implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 
     public String getUserName() {
         return userName;
@@ -78,11 +78,11 @@ public class User extends BaseModel implements Serializable {
         this.email = email;
     }
 
-    public Boolean getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 }

@@ -3,16 +3,17 @@ package com.aimprosoft.timetracking.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "user_roles")
-public class UserRole extends BaseModel{
+public class UserRole extends BaseModel {
 //todo one-tp-many
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "role_id", nullable = false)
+    private Long roleId;
 
     public Long getUserId() {
         return userId;
@@ -22,11 +23,11 @@ public class UserRole extends BaseModel{
         this.userId = userId;
     }
 
-    public String getRole() {
-        return role;
+    public Long getRole() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole(Long roleId) {
+        this.roleId = roleId;
     }
 }

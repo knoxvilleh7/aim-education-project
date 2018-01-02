@@ -19,18 +19,45 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
+    public LoginSecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                    .antMatchers("/public/**").permitAll()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin()
+//                    .loginPage("/#/login")
+//                    .permitAll()
+//                    .and()
+//                .httpBasic()
+//                    .and()
+//                .csrf().disable()
+//                .logout()
+//                    .logoutSuccessUrl("/")
+//                    .invalidateHttpSession(true)
+//                    .deleteCookies("JSESSIONID");
+//
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/public/**").permitAll()
+//                .antMatchers("/").permitAll()
+//                .antMatchers("/api/**").authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/#/login")
+//                .permitAll()
+
+
         http
                 .authorizeRequests()
                 .antMatchers("/api/**", "/*").hasRole("USER")

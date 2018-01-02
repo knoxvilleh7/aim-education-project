@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface UserRoleRepository extends CrudRepository<UserRole, Long> {
 //todo
-    @Query("select a.role from UserRole a, User b where b.userName=?1 and a.userId=b.id")
-    List<String> findRoleByUserName(String username);
+    @Query("select a.roleId from UserRole a where a.userId= (select u.id from User u where u.login=?1)")
+    List<Long> findUserRoleByUserLogin(String login);
 }
